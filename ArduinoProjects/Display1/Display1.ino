@@ -9,15 +9,10 @@ int arrowPosition = 0; // Переменная для отслеживания �
 int menuPage = 1; // Переменная для отслеживания текущей страницы меню
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
-
 void setup() {
-  // для температуры;
   Serial.begin(57600);
   pinMode(10, INPUT);
   digitalWrite(10, HIGH);
-
-  // для генерации рандомных чисел;
-  randomSeed(analogRead(0));
 
   pinMode(ButtonDown, INPUT_PULLUP);
   pinMode(ButtonUp, INPUT_PULLUP);
@@ -35,7 +30,7 @@ void setup() {
   lcd.setCursor(15, 1);
   lcd.print("]");
 
-  for(int j = 1; j <= 14; j++){
+  for (int j = 1; j <= 14; j++) {
     lcd.setCursor(j, 1);
     lcd.print("*");
     delay(50);
@@ -46,14 +41,17 @@ void setup() {
 }
 
 void loop() {
-// Для температуры и влажности;
-
   int temperature = sens.readTemperature();
   int humidity = sens.readHumidity();
+
+  Serial.print("Temperature: ");
+  Serial.print(temperature);
+  Serial.println(" C");
 
   delay(2000);
 
   lcd.clear();
+
 
   // lcd.setCursor(10, 0);
   // lcd.print("20:45");
