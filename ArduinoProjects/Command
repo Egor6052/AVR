@@ -1,0 +1,7 @@
+	sudo arduino-cli upload -p /dev/ttyACM0 -b arduino:avr:uno YourSketch.ino
+
+Добавление пользователя в группу dialout (или tty): 
+	sudo usermod -a -G dialout admin1
+
+Установка прав доступа к устройству: 
+	sudo chmod a+rw /dev/ttyACM0
